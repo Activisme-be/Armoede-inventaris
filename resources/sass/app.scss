@@ -1,0 +1,185 @@
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'settings/variables';
+@import 'modules/icons';
+@import 'modules/page-header';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+@import "~primer-blankslate/index.scss";
+
+// Stamp partial 
+.stamp {
+  color: #fff;
+  background: #868e96;
+  display: inline-block;
+  min-width: 2rem;
+  height: 2rem;
+  padding: 0 .25rem;
+  line-height: 2rem;
+  text-align: center;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+.stamp-md {
+  min-width: 2.5rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+}
+
+.stamp-bg-brand {
+  background-color: #b9210c;
+}
+
+.blankslate {
+  background-color: #fff;
+  border-radius: 0.25rem;
+}
+
+.form-search {
+  width: 225px;
+}
+
+.dropdown-header {
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+}
+
+.qr-2fa-code {
+  height: 175px; 
+  width: 175px;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+  color: #000;
+  text-decoration: none;
+  background-color: #f8f9fa;
+}
+
+a.disabled,
+a:disabled {
+  pointer-events: none;
+  opacity: 0.65;
+}
+
+.dropdown-item:first-child {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.dropdown-item:last-child {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.btn {
+  white-space: nowrap;
+}
+
+// Footer partial
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px; // Set the fixed height of the footer here
+  line-height: 60px; // Vertically center the text there
+  background-color: $gray-800;
+}
+
+.copyright {
+  color: #fff;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px; // Set the fixed height of the footer here
+  line-height: 60px; // Vertically center the text there
+  background-color: $gray-800;
+}
+
+.copyright {
+  color: #fff;
+}
+
+// html,
+// body {
+//  overflow-x: hidden; /* Prevent scroll on narrow devices */
+// }
+
+body {
+  margin-bottom: 60px; // Margin bottom by footer height
+}
+
+.nav-scroller {
+  position: relative;
+  z-index: 2;
+  height: 2.75rem;
+  overflow-y: hidden;
+}
+
+.fe-brand {
+  color: #b9210c;
+}
+
+.nav-scroller .nav {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  padding-bottom: 1rem;
+  margin-top: -1px;
+  overflow-x: auto;
+  color: rgba(255, 255, 255, .75);
+  text-align: center;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.nav-underline .nav-link {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  font-size: .875rem;
+  color: #6c757d;
+}
+
+.td-attribute {
+  width: 15%;
+}
+
+.td-key {
+  width: 85%;
+}
+
+.nav-underline .nav-link:hover {
+  color: #007bff;
+}
+
+.nav-underline .active {
+  font-weight: 500;
+  color: #343a40;
+}
+
+.text-white-50 { color: rgba(255, 255, 255, .5); }
+
+.bg-purple { background-color: #6f42c1; }
+
+.lh-100 { line-height: 1; }
+.lh-125 { line-height: 1.25; }
+.lh-150 { line-height: 1.5; }
