@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Composers\AlertComposer;
+use App\Composers\AppNavComposer;
 use App\Composers\KioskComposer;
 use App\Composers\LayoutComposer;
 use Illuminate\Support\ServiceProvider;
@@ -17,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        view()->composer('layouts._navigation.application', AppNavComposer::class);
         view()->composer('*', LayoutComposer::class);
         view()->composer('kiosk', KioskComposer::class);
         view()->composer('notifications.kiosk._partials.sidenav', AlertComposer::class);
