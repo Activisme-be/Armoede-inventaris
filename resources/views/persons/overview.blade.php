@@ -7,7 +7,7 @@
             <div class="page-subtitle">Overzicht van hulpbehoevende personen</div>
 
             <div class="d-flex page-options">
-                <a href="" class="btn btn-secondary shadow-sm">
+                <a href="{{ route('persons.create') }}" class="btn btn-secondary shadow-sm">
                     <i class="fe fe-plus"></i>
                 </a>
 
@@ -25,10 +25,27 @@
             </h6>
 
             <div class="table-responsive">
-                <table class="table table-sm table-hover">
+                <table class="table table-sm mb-0 table-hover">
                     <thead>
-
+                        <tr>
+                            <th class="border-top-0 text-muted" scope="col">#</th>
+                            <th class="border-top-0" scope="col">Naam</th>
+                            <th class="border-top-0" scope="col">Email adres</th>
+                            <th class="border-top-0" scope="col">Open aanvragen</th>
+                            <th class="border-top-0" scope="col">Registratie datum</th>
+                            <th class="border-top-0" scope="col">&nbsp;</th>
+                        </tr>
                     </thead>
+                    <tbody>
+                        @forelse ($persons as $person)
+                        @empty
+                            <tr>
+                                <td colspan="6" class="text-muted font-italic">
+                                    <i class="fe fe-info mr-1"></i> Er zijn geen hulpbehoevende personen gevonden momenteel.
+                                </td>
+                            </tr>
+                        @endforelse
+                    </tbody>
                 </table>
             </div>
 

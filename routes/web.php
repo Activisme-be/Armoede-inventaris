@@ -28,7 +28,8 @@ Route::get('/notificaties/markOne/{notification}', [NotificationController::clas
 Route::get('/notificaties/{type?}', [NotificationController::class, 'index'])->name('notifications.index');
 
 // Persons routes
-Route::get('personen', [PersonsController::class, 'index'])->name('persons.overview');
+Route::get('/personen', [PersonsController::class, 'index'])->name('persons.overview');
+Route::get('/personen/nieuw', [PersonsController::class, 'create'])->name('persons.create');
 
 // User Settings routes
 Route::get('/account', [AccountController::class, 'index'])->name('account.settings');
