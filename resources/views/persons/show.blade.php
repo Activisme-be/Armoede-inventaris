@@ -21,14 +21,16 @@
             </div>
 
             <div class="col-9">
-                <form action="" method="POST" class="card card-body shadow-sm border-0">
+                <form action="{{ route('persons.update', $person) }}" method="POST" class="card card-body shadow-sm border-0">
                     <h6 class="border-bottom border-gray pb-1 mb-3">
                         <i class="fe fe-info fe-brand mr-2"></i> Algemene informatie van {{ ucfirst($person->name) }}
                     </h6>
 
                     @csrf               {{-- Form field protection --}}
-                    @method ('PATCH')
-                    @form($person)
+                    @method ('PATCH')   {{-- HTTP method spoofing --}}
+                    @form($person)      {{-- Bind the given person data to the form --}}
+
+                    @include ('flash::message') {{-- Flash session view partial --}}
 
                     <fieldset @cannot('update', $person) disabled @endcan>
                         @include ('persons._partials._form')

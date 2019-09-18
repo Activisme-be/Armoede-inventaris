@@ -78,6 +78,29 @@ class PersonsController extends Controller
     }
 
     /**
+     * Method for updating the person information in the application;
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException <- Triggers when the user is not authorized
+     *
+     * @param  PersonFormRequest $request
+     * @param  Person            $person
+     * @return RedirectResponse
+     */
+    public function update(PersonFormRequest $request, Person $person): RedirectResponse
+    {
+        $this->authorize('update', $person);
+
+        DB::transaction(static function () use ($request, $person): void {
+            $person->update($request->all());
+            $request->user()->logActivity($person, 'Personen', "Heeft de gegegevens van {$person->name} aangepast in de applicatie");
+
+            flash("De gegevens van {$person->name} zijn aangepast in de applicatie");
+        });
+
+        return back(); // The update is successfully so redirect the user back to the previous page.
+    }
+
+    /**
      * Method for deleting a person in the application.
      *
      * @param  Request $request The request instance that holds all the request information.

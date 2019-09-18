@@ -32,6 +32,7 @@ Route::get('/personen', [PersonsController::class, 'index'])->name('persons.over
 Route::get('/personen/nieuw', [PersonsController::class, 'create'])->name('persons.create');
 Route::post('/personen/nieuw', [PersonsController::class, 'store'])->name('persons.store');
 Route::get('/persoon/{person}', [PersonsController::class, 'show'])->name('persons.show');
+Route::patch('/persoon/{person}', [PersonsController::class, 'update'])->name('persons.update');
 Route::match(['get', 'delete'], '/personen/verwijder/{person}', [PersonsController::class, 'destroy'])->name('persons.delete');
 
 // User Settings routes
