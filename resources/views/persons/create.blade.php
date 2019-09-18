@@ -7,7 +7,7 @@
             <div class="page-subtitle">Hulpbehoevende persoon toevoegen</div>
 
             <div class="page-options d-flex">
-                <a href="" class="btn btn-secondary shadow-sm">
+                <a href="{{ route('persons.overview') }}" class="btn btn-secondary shadow-sm">
                     <i class="fe fe-users mr-2"></i> Overzicht
                 </a>
             </div>
@@ -15,7 +15,7 @@
     </div>
 
     <div class="container-fluid pb-3">
-        <form action="" method="POST" class="card card-body shadow-sm border-0">
+        <form action="{{ route('persons.store') }}" method="POST" class="card card-body shadow-sm border-0">
             <h6 class="border-bottom border-gray pb-1 mb-3">
                 <i class="fe fe-plus fe-brand mr-2"></i> Hulpbehoevende persoon toevoegen
             </h6>

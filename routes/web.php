@@ -30,6 +30,7 @@ Route::get('/notificaties/{type?}', [NotificationController::class, 'index'])->n
 // Persons routes
 Route::get('/personen', [PersonsController::class, 'index'])->name('persons.overview');
 Route::get('/personen/nieuw', [PersonsController::class, 'create'])->name('persons.create');
+Route::post('/personen/nieuw', [PersonsController::class, 'store'])->name('persons.store');
 
 // User Settings routes
 Route::get('/account', [AccountController::class, 'index'])->name('account.settings');

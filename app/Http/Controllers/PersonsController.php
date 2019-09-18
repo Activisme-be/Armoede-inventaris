@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PersonFormRequest;
 use App\Models\Person;
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class PersonsController
@@ -42,5 +45,24 @@ class PersonsController extends Controller
     public function create(): Renderable
     {
         return view('persons.create');
+    }
+
+    /**
+     * Method for storing a new person in the application.
+     *
+     * @param  PersonFormRequest    $request    The form request class that handles all the validation logic.
+     * @param  Person               $person     The database model for the persons in the application.
+     * @return RedirectResponse
+     */
+    public function store(PersonFormRequest $request, Person $person): RedirectResponse
+    {
+        DB::transaction(static function () use ($request, $person) {
+            $person->create($request->all());
+            $request->user()->logActivity($person, 'Personen', 'Heeft een hulpbehoevend persoon toegevoegd in de applicatie');
+
+            flash('De persoon is aan gemaakt in de applicatie.');
+        });
+
+        return redirect()->route('persons.overview');
     }
 }

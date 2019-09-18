@@ -24,6 +24,8 @@
                 <i class="fe fe-users fe-brand mr-2"></i> Overzicht van hulpbehoevende personen
             </h6>
 
+            @include ('flash::message') {{-- Flash session view partial --}}
+
             <div class="table-responsive">
                 <table class="table table-sm mb-0 table-hover">
                     <thead>
