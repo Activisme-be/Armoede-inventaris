@@ -4,7 +4,7 @@
     <div class="container-fluid py-3">
         <div class="page-header">
             <h1 class="page-title">Personen</h1>
-            <div class="page-subtitle">Hulpbehoevende persoon verwijderen</div>
+            <div class="page-subtitle">{{ ucfirst($person->name) }} verwijderen in de applicatie.</div>
 
             <div class="page-options d-flex">
                 <a href="{{ route('persons.overview') }}" class="btn btn-secondary">
@@ -22,7 +22,7 @@
             <div class="col-9">
                 <form action="{{ route('persons.delete', $person) }}" method="POST" class="card card-body shadow-sm border-0">
                     <h6 class="border-bottom border-gray pb-1 mb-3">
-                        <i class="fe fe-trash-2 fe-brand mr-2"></i> Hulpbehoevende persoon verwijderen
+                        <i class="fe fe-trash-2 fe-brand mr-2"></i> {{ ucfirst($person->name) }} verwijderen in de applicatie.
                     </h6>
 
                     @csrf               {{-- Form field protection --}}

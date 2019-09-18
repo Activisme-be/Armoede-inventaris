@@ -12282,6 +12282,25 @@ a.text-dark:focus {
   border-left: 5px solid #b9210c;
 }
 
+.form-control:disabled,
+.form-control[readonly] {
+  background-color: #f1f5f8;
+  pointer-events: none;
+  opacity: 1;
+  color: #606F7B;
+  border: 0 !important;
+  outline: none;
+}
+
+.custom-select:disabled {
+  background-color: #f1f5f8;
+  pointer-events: none;
+  opacity: 1;
+  color: #606F7B;
+  border: 0 !important;
+  outline: none;
+}
+
 .form-search-xl {
   width: 280px;
 }

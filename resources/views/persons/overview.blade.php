@@ -53,7 +53,11 @@
 
                                 <td> {{-- Options --}}
                                     <span class="float-right">
-                                        <a href="{{ route('persons.delete', $person) }}" class="text-decoration-none text-danger">
+                                        <a href="{{ route('persons.show', $person) }}" class="text-decoration-none text-muted">
+                                            <i class="fe fe-eye"></i>
+                                        </a>
+
+                                        <a href="{{ route('persons.delete', $person) }}" class="text-decoration-none text-danger ml-1">
                                             <i class="fe fe-trash-2"></i>
                                         </a>
                                     </span>

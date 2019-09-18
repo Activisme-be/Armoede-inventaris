@@ -67,6 +67,17 @@ class PersonsController extends Controller
     }
 
     /**
+     * Method for displaying the information about the given person.
+     *
+     * @param  Person $person The database entity from the given person.
+     * @return Renderable
+     */
+    public function show(Person $person): Renderable
+    {
+        return view('persons.show', compact('person'));
+    }
+
+    /**
      * Method for deleting a person in the application.
      *
      * @param  Request $request The request instance that holds all the request information.

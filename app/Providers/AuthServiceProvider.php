@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Person;
 use App\Models\User;
+use App\Policies\PersonPolicy;
 use App\Policies\UserPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -16,7 +18,10 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @var array
      */
-    protected $policies = [User::class => UserPolicy::class];
+    protected $policies = [
+        User::class => UserPolicy::class,
+        Person::class => PersonPolicy::class
+    ];
 
     /**
      * Register any authentication / authorization services.
