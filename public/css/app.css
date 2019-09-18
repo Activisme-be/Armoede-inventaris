@@ -1124,7 +1124,7 @@
   --blue: #3490dc;
   --indigo: #6574cd;
   --purple: #9561e2;
-  --pink: #f66D9b;
+  --pink: #f66d9b;
   --red: #e3342f;
   --orange: #f6993f;
   --yellow: #ffed4a;
@@ -1653,7 +1653,7 @@ mark,
 
 code {
   font-size: 87.5%;
-  color: #f66D9b;
+  color: #f66d9b;
   word-break: break-word;
 }
 
@@ -12264,6 +12264,10 @@ a.text-dark:focus {
   background: none;
   border: 0;
   box-shadow: none;
+}
+
+.form-search-xl {
+  width: 280px;
 }
 
 .stamp {

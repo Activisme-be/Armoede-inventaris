@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\PersonsController;
 use App\Http\Controllers\Users\AccountController;
 use App\Http\Controllers\Auth\PasswordSecurityController;
 
@@ -25,6 +26,9 @@ Route::get('{user}/logs', [ActivityController::class, 'show'])->name('users.acti
 Route::get('/notificaties/markAll', [NotificationController::class, 'markAll'])->name('notifications.markAll');
 Route::get('/notificaties/markOne/{notification}', [NotificationController::class, 'markOne'])->name('notifications.markAsRead');
 Route::get('/notificaties/{type?}', [NotificationController::class, 'index'])->name('notifications.index');
+
+// Persons routes
+Route::get('personen', [PersonsController::class, 'index'])->name('persons.overview');
 
 // User Settings routes
 Route::get('/account', [AccountController::class, 'index'])->name('account.settings');

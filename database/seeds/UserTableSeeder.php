@@ -77,7 +77,7 @@ class UserTableSeeder extends Seeder
         $person = $this->fakerPerson();
         $data = ['voornaam' => $person['firstName'], 'achternaam' => $person['lastName'], 'email' => $person['email'], 'email_verified_at' => now(), 'password' => $this->faker()->password];
 
-        return User::create(array_merge($attributes, $data));
+        return User::create($attributes + $data);
     }
 
     /**

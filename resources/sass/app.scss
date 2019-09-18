@@ -11,7 +11,11 @@
 @import '~bootstrap/scss/bootstrap';
 @import "~primer-blankslate/index.scss";
 
-// Stamp partial 
+.form-search-xl {
+    width: 280px;
+}
+
+// Stamp partial
 .stamp {
   color: #fff;
   background: #868e96;
@@ -50,7 +54,7 @@
 }
 
 .qr-2fa-code {
-  height: 175px; 
+  height: 175px;
   width: 175px;
 }
 

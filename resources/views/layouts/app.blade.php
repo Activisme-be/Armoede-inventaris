@@ -23,11 +23,11 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <img src="{{ asset('img/logo.png') }}" width="25" height="25" class="mr-3 rounded-circle d-inline-block align-top" alt="{{ config('app.name', 'Laravel') }}">
+            <img src="{{ asset('img/logo.png') }}" width="35" height="35" class="mr-3 rounded d-inline-block align-top" alt="{{ config('app.name', 'Laravel') }}">
             <a class="navbar-brand mr-auto mr-lg-0" href="#">
                 {{ config('app.name', 'Laravel') }} {{ $currentUser->cannot('on-kiosk', auth()->user()) ? '' : ' - Kiosk' }}
             </a>
-            
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -40,7 +40,7 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('notifications.index') }}">
-                            <i class="fe fe-bell mr-1"></i> 
+                            <i class="fe fe-bell mr-1"></i>
                             <span style="margin-top: -.25rem;" class="badge badge-pill align-middle badge-danger">
                                 {{ $currentUser->unreadNotifications()->count() }}
                             </span>
@@ -63,7 +63,7 @@
                                 @else {{-- Authenticated user is on the kiosk management portal --}}
                                     <a class="dropdown-item" href="{{ route('kiosk.dashboard') }}">
                                         <i class="fe fe-home mr-1 text-secondary"></i> Kiosk
-                                    </a> 
+                                    </a>
                                 @endif
                             @endif
 
@@ -89,7 +89,7 @@
 
         <div class="nav-scroller bg-white shadow-sm">
             <nav class="nav nav-underline">
-                @if ($currentUser->can('on-application', auth()->user())) 
+                @if ($currentUser->can('on-application', auth()->user()))
                     @include ('layouts._navigation.application')
                 @elseif ($currentUser->can('on-kiosk', auth()->user()))
                     @include ('layouts._navigation.kiosk')
