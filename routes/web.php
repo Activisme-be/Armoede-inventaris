@@ -31,6 +31,7 @@ Route::get('/notificaties/{type?}', [NotificationController::class, 'index'])->n
 Route::get('/personen', [PersonsController::class, 'index'])->name('persons.overview');
 Route::get('/personen/nieuw', [PersonsController::class, 'create'])->name('persons.create');
 Route::post('/personen/nieuw', [PersonsController::class, 'store'])->name('persons.store');
+Route::match(['get', 'delete'], '/personen/verwijder/{person}', [PersonsController::class, 'destroy'])->name('persons.delete');
 
 // User Settings routes
 Route::get('/account', [AccountController::class, 'index'])->name('account.settings');

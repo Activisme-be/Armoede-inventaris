@@ -37021,9 +37021,9 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Gebruiker\Documents\inventaris\resources\js\auth.js */"./resources/js/auth.js");
-__webpack_require__(/*! C:\Users\Gebruiker\Documents\inventaris\resources\sass\auth.scss */"./resources/sass/auth.scss");
-module.exports = __webpack_require__(/*! C:\Users\Gebruiker\Documents\inventaris\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/tjoosten/Documents/aid/resources/js/auth.js */"./resources/js/auth.js");
+__webpack_require__(/*! /Users/tjoosten/Documents/aid/resources/sass/auth.scss */"./resources/sass/auth.scss");
+module.exports = __webpack_require__(/*! /Users/tjoosten/Documents/aid/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

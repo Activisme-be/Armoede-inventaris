@@ -65,4 +65,28 @@ class PersonsController extends Controller
 
         return redirect()->route('persons.overview');
     }
+
+    /**
+     * Method for deleting a person in the application.
+     *
+     * @param  Request $request The request instance that holds all the request information.
+     * @param  Person  $person  The database entity from the given person in the application.
+     * @return Renderable\RedirectResponse
+     */
+    public function destroy(Request $request, Person $person)
+    {
+        if ($request->isMethod('GET')) {
+            return view('persons.delete', compact('person'));
+        }
+
+        // Method is a DELETE request so move on with the delete logic.
+        DB::transaction(static function () use ($request, $person): void {
+            $person->delete();
+            $request->user()->logActivity($person, 'Personen', 'Heeft een hulpbehoevend persoon verwijderd in de applicatie.');
+
+            flash($person->name . ' is verwijderd als hulpbehoevende persoon uit de applicatie.');
+        });
+
+        return redirect()->route('persons.overview');
+    }
 }
