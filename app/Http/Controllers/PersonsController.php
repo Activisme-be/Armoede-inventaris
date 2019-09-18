@@ -34,7 +34,7 @@ class PersonsController extends Controller
      */
     public function index(Person $persons): Renderable
     {
-        return view('persons.overview', ['persons' => $persons->paginate()]);
+        return view('persons.overview', ['persons' => $persons->withCount(['supportRequests'])->paginate()]);
     }
 
     /**

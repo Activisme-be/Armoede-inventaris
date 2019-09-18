@@ -40,6 +40,25 @@
                     </thead>
                     <tbody>
                         @forelse ($persons as $person)
+                            <tr>
+                                <td class="font-weight-bold text-muted">#{{ $person->id }}</td>
+                                <td>{{ $person->name }}</td>
+                                <td>
+                                    <a href="mailto:{{ $person->email }}" class="text-decoration-none">
+                                        {{ $person->email }}
+                                    </a>
+                                </td>
+                                <td>{{ (int) $person->supportRequests_count }} aanvragen</td>
+                                <td>{{ $person->created_at->format('d/m/Y') }}</td>
+
+                                <td> {{-- Options --}}
+                                    <span class="float-right">
+                                        <a href="" class="text-decoration-none text-danger">
+                                            <i class="fe fe-trash-2"></i>
+                                        </a>
+                                    </span>
+                                </td> {{-- /// Options --}}
+                            </tr>
                         @empty
                             <tr>
                                 <td colspan="6" class="text-muted font-italic">
