@@ -30,6 +30,18 @@ class Person extends Model
     }
 
     /**
+     * Data relation for the internal notes for the person in the application.
+     * ----
+     * WARNING: Notes should never be shared with the person. <- For later development.
+     *
+     * @return HasMany
+     */
+    public function notes(): HasMany
+    {
+        return $this->hasMany(Note::class);
+    }
+
+    /**
      * Data relation for all the support requests from the user.
      *
      * @return HasMany

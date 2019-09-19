@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\NotesController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PersonsController;
 use App\Http\Controllers\Users\AccountController;
@@ -34,6 +35,11 @@ Route::post('/personen/nieuw', [PersonsController::class, 'store'])->name('perso
 Route::get('/persoon/{person}', [PersonsController::class, 'show'])->name('persons.show');
 Route::patch('/persoon/{person}', [PersonsController::class, 'update'])->name('persons.update');
 Route::match(['get', 'delete'], '/personen/verwijder/{person}', [PersonsController::class, 'destroy'])->name('persons.delete');
+
+// Person notes route
+Route::get('/persoon/{person}/notities', [NotesController::class, 'index'])->name('person.notes.overview');
+Route::get('/persoon/{person}/nieuwe-notitie', [NotesController::class, 'create'])->name('person.notes.create');
+Route::post('/persoon/{person}/nieuwe-notitie', [NotesController::class, 'store'])->name('person.notes.store');
 
 // User Settings routes
 Route::get('/account', [AccountController::class, 'index'])->name('account.settings');

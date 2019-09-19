@@ -97,7 +97,7 @@ class PersonsController extends Controller
             flash("De gegevens van {$person->name} zijn aangepast in de applicatie");
         });
 
-        return back(); // The update is successfully so redirect the user back to the previous page.
+        return redirect()->route('persons.show', $person); // The update is successfully so redirect the user back to the previous page.
     }
 
     /**
