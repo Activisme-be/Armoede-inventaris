@@ -31,7 +31,7 @@
                     <div class="form-row">
                         <div class="form-group col-7">
                             <label for="title">Titel <span class="text-danger">*</span></label>
-                            <input type="text" id="title" class="form-control @error('title', 'is-invalid')" placeholder="Titel van de notitie" @input('titel')>
+                            <input type="text" id="title" class="form-control @error('titel', 'is-invalid')" placeholder="Titel van de notitie" @input('titel')>
                             @error('titel')
                         </div>
 
@@ -42,12 +42,13 @@
                                 @options($statuses, 'is_public', old('is_public'))
                             </select>
 
-                            @error('visibility') {{-- Validation error view partial --}}
+                            @error('is_public') {{-- Validation error view partial --}}
                         </div>
 
                         <div class="form-group col-12">
                             <label for="note">Notitie <span class="text-danger">*</span></label>
                             <textarea id=note" rows="6" class="form-control @error('notitie', 'is-invalid')" placeholder="Uw notitie" @input('notitie')>{{ $note->notitie ?? old('notitie') }}</textarea>
+                            @error('notitie')
                         </div>
                     </div>
 

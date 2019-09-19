@@ -4,27 +4,24 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * Class NoteFormRequest
+ *
+ * @package App\Http\Requests
+ */
 class NoteFormRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return false;
-    }
-
     /**
      * Get the validation rules that apply to the request.
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            //
+            'titel'     => ['required', 'string', 'max:255'],
+            'is_public' => ['required', 'boolean'],
+            'notitie'   => ['required', 'string'],
         ];
     }
 }
