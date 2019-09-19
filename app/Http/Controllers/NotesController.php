@@ -8,6 +8,7 @@ use App\Models\Person;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class NotesController
@@ -56,13 +57,21 @@ class NotesController extends Controller
     /**
      * Method for storing an new note for the given person in the application.
      *
+     * @todo Create relation setters
+     *
      * @param  NoteFormRequest  $request The form request class that handles the form validation.
      * @param  Person           $person  Database entity from the given person in the application.
      * @return RedirectResponse
      */
     public function store(NoteFormRequest $request, Person $person): RedirectResponse
     {
-        // TODO
-        dd($request->all(), $person);
+        DB::transaction(static function () use ($request, $person): void {
+            $note = Note::create($request->all())->setAuthor($request->user())->setPerson($person);
+
+            $request->logActivity($note, 'Notities', 'Heeft een notitie toegevoegd voor ' . $person->name);
+            flash('De notitie is opgeslagen in de applicatie.');
+        });
+
+        return redirect()->route('person.notes.overview', $person);
     }
 }
