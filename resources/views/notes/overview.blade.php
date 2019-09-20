@@ -63,7 +63,7 @@
                                                 </a>
 
                                                 @can('delete', $note) {{-- Check is the user is authorized to delete the note --}}
-                                                    <a href="" class="text-decoration-none text-danger ml-1">
+                                                    <a href="{{ route('person.notes.delete', $note) }}" class="text-decoration-none text-danger ml-1">
                                                         <i class="fe fe-trash-2"></i>
                                                     </a>
                                                 @endcan

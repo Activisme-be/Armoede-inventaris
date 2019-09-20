@@ -40,6 +40,7 @@ Route::match(['get', 'delete'], '/personen/verwijder/{person}', [PersonsControll
 Route::get('/persoon/{person}/notities', [NotesController::class, 'index'])->name('person.notes.overview');
 Route::get('/persoon/{person}/nieuwe-notitie', [NotesController::class, 'create'])->name('person.notes.create');
 Route::post('/persoon/{person}/nieuwe-notitie', [NotesController::class, 'store'])->name('person.notes.store');
+Route::get('/notitie/verwijderen/{note}', [NotesController::class, 'destroy'])->name('person.notes.delete');
 
 // User Settings routes
 Route::get('/account', [AccountController::class, 'index'])->name('account.settings');

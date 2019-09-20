@@ -55,6 +55,29 @@ class NotesController extends Controller
     }
 
     /**
+     * Method for deleting a note in the application.
+     *
+     *  @throws \Illuminate\Auth\Access\AuthorizationException <- Triggers when the user is not authorized.
+     *
+     * @param Request $request  Instance that holds all the request data
+     * @param Note    $note     Database entity from the given note.
+     * @return RedirectResponse
+     */
+    public function destroy(Request $request, Note $note): RedirectResponse
+    {
+        $this->authorize('delete', $note);
+
+        DB::transaction(static function () use ($request, $note): void {
+            $note->delete();
+            $request->user()->logActivity($note, 'Notities', 'Heeft een notitie verwijderd in de applicatie.');
+
+            flash('De notitie is verwijderd in de applicatie.');
+        });
+
+        return redirect()->route('person.notes.overview', $note->person);
+    }
+
+    /**
      * Method for storing an new note for the given person in the application.
      *
      * @param  NoteFormRequest  $request The form request class that handles the form validation.
