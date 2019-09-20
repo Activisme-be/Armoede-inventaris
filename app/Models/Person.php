@@ -30,6 +30,16 @@ class Person extends Model
     }
 
     /**
+     * Get all the notes for the overview page.
+     *
+     * @return HasMany
+     */
+    public function getOverviewNotes(): HasMany
+    {
+        return $this->notes()->where('is_public', false)->whereCreatorId(auth()->user()->id);
+    }
+
+    /**
      * Data relation for the internal notes for the person in the application.
      * ----
      * WARNING: Notes should never be shared with the person. <- For later development.

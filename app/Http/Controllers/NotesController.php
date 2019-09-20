@@ -38,7 +38,7 @@ class NotesController extends Controller
      */
     public function index(Person $person): Renderable
     {
-        $notes = $person->notes()->paginate();
+        $notes = $person->getOverviewNotes()->paginate();
         return view('notes.overview', compact('person', 'notes'));
     }
 
