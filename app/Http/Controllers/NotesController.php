@@ -57,8 +57,6 @@ class NotesController extends Controller
     /**
      * Method for storing an new note for the given person in the application.
      *
-     * @todo Create relation setters
-     *
      * @param  NoteFormRequest  $request The form request class that handles the form validation.
      * @param  Person           $person  Database entity from the given person in the application.
      * @return RedirectResponse
@@ -66,9 +64,9 @@ class NotesController extends Controller
     public function store(NoteFormRequest $request, Person $person): RedirectResponse
     {
         DB::transaction(static function () use ($request, $person): void {
-            $note = Note::create($request->all())->setAuthor($request->user())->setPerson($person);
+            $note = Note::create($request->all())->setCreator($request->user())->setPerson($person);
 
-            $request->logActivity($note, 'Notities', 'Heeft een notitie toegevoegd voor ' . $person->name);
+            $request->user()->logActivity($note, 'Notities', 'Heeft een notitie toegevoegd voor ' . $person->name);
             flash('De notitie is opgeslagen in de applicatie.');
         });
 

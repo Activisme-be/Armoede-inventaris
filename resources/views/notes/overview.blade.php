@@ -44,7 +44,7 @@
                             <tbody>
                                 @forelse ($notes as $note) {{-- Loop trough the notes about the peron --}}
                                     <tr>
-                                        <td class="font-weight-bold">{{ $note->author->name }}</td>
+                                        <td class="font-weight-bold">{{ $note->creator->name }}</td>
 
                                         <td> {{-- visibility indicator --}}
                                             @if ($note->is_public)
@@ -57,15 +57,17 @@
                                         <td>{{ $note->titel }}</td>
 
                                         <td> {{-- Function shortcuts --}}
-                                            <a href="" class="text-decoration-none text-muted">
-                                                <i class="fe fe-eye"></i>
-                                            </a>
-
-                                            @can('delete', $note) {{-- Check is the user is authorized to delete the note --}}
-                                                <a href="" class="text-decoration-none text-danger ml-1">
-                                                    <i class="fe fe-trash-2"></i>
+                                            <span class="float-right">
+                                                <a href="" class="text-decoration-none text-muted">
+                                                    <i class="fe fe-eye"></i>
                                                 </a>
-                                            @endcan
+
+                                                @can('delete', $note) {{-- Check is the user is authorized to delete the note --}}
+                                                    <a href="" class="text-decoration-none text-danger ml-1">
+                                                        <i class="fe fe-trash-2"></i>
+                                                    </a>
+                                                @endcan
+                                            </span>
                                         </td> {{-- /// Function shortcuts --}}
                                     </tr>
                                 @empty {{-- There are no notes from the person found --}}

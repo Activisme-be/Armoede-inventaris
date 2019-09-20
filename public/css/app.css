@@ -12266,7 +12266,9 @@ a.text-dark:focus {
   box-shadow: none;
 }
 
-.badge-counter {
+.badge-counter,
+.badge-public,
+.badge-only-me {
   color: #38A169;
   background-color: #C6F6D5;
 }

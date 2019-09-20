@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\Relations\Creatorable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * Class Note
@@ -11,12 +13,24 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Note extends Model
 {
+    use Creatorable;
+
     /**
      * Guarded fields for the internal mass-assignment system.
      *
      * @var array
      */
     protected $guarded = [];
+
+    /**
+     * Data relation for the person attached to the note.
+     *
+     * @return BelongsTo
+     */
+    public function person(): BelongsTo
+    {
+        return $this->belongsTo(Person::class);
+    }
 
     /**
      * Data relation for the person from the note.
