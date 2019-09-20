@@ -11,7 +11,7 @@
         </span>
 
         <span class="badge badge-counter badge-pill">
-            {{ $person->getOverviewNotes()->count() }}
+            {{ $person->notes->count() }}
         </span>
     </a>
 

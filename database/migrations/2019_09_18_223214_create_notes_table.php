@@ -27,7 +27,6 @@ class CreateNotesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('person_id')->nullable(); // (1)
             $table->unsignedBigInteger('creator_id')->nullable();
-            $table->boolean('is_public')->default(true);
             $table->string('titel');
             $table->text('notitie');
             $table->timestamps();

@@ -29,20 +29,10 @@
                     @csrf {{-- HTTP form field protection --}}
 
                     <div class="form-row">
-                        <div class="form-group col-7">
+                        <div class="form-group col-8">
                             <label for="title">Titel <span class="text-danger">*</span></label>
                             <input type="text" id="title" class="form-control @error('titel', 'is-invalid')" placeholder="Titel van de notitie" @input('titel')>
                             @error('titel')
-                        </div>
-
-                        <div class="form-group col-5">
-                            <label for="visibility">Zichtbaarheid <span class="text-danger">*</span></label>
-
-                            <select id="visibility" class="custom-select @error('is_public', 'is-invalid')" @input('is_public')>
-                                @options($statuses, 'is_public', old('is_public'))
-                            </select>
-
-                            @error('is_public') {{-- Validation error view partial --}}
                         </div>
 
                         <div class="form-group col-12">

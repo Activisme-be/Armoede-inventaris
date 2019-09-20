@@ -38,7 +38,7 @@ class NotesController extends Controller
      */
     public function index(Person $person): Renderable
     {
-        $notes = $person->getOverviewNotes()->paginate();
+        $notes = $person->notes()->paginate();
         return view('notes.overview', compact('person', 'notes'));
     }
 
@@ -50,8 +50,7 @@ class NotesController extends Controller
      */
     public function create(Person $person): Renderable
     {
-        $statuses = [0 => 'Persoonlijke notitie', 1 => 'Publieke notitite'];
-        return view('notes.create', ['statuses' => $statuses, 'person' => $person]);
+        return view('notes.create', compact('person'));
     }
 
     /**
