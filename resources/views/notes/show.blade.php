@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid py-3">
         <div class="page-header">
-            <h1 class="page-title">Notities</h1>
+            <h1 class="page-title">Personen</h1>
             <div class="page-subtitle">Notitie weergave van <span class="font-weight-bold"n>{{ $note->person->name }}</span></div>
 
             <div class="page-options d-flex">
@@ -35,7 +35,7 @@
                         </a>
 
                         <span class="float-right">
-                            <a href="" class="card-link text-muted">
+                            <a href="{{ route('person.notes.edit', $note) }}" class="card-link text-muted">
                                 <i class="fe fe-edit mr-1"></i> Wijzig
                             </a>
 

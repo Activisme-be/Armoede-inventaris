@@ -54,6 +54,38 @@ class NotesController extends Controller
     }
 
     /**
+     * Method for displaying the edit view from a note.
+     *
+     * @todo Register route
+     *
+     * @param  Note $note The database entity from the given note.
+     * @return Renderable
+     */
+    public function edit(Note $note): Renderable
+    {
+        return view('notes.edit', compact('note'));
+    }
+
+    /**
+     * Method for updating a note from the person in the application.
+     *
+     * @param  NoteFormRequest $request The form request class that handles all the validation logic.
+     * @param  Note            $note    The database entity from the given note.
+     * @return RedirectResponse
+     */
+    public function update(NoteFormRequest $request, Note $note): RedirectResponse
+    {
+        DB::transaction(static function () use ($request, $note) {
+            $note->update($request->all());
+            $request->user()->logActivity($note, 'Notities', "Heeft een notitie van {$note->person->name} gewijzigd");
+
+            flash('De notitie is gewijzigd met succes in de applicatie');
+        });
+
+        return redirect()->route('person.notes.overview', $note->person);
+    }
+
+    /**
      * Method for creating a new note for the person.
      *
      * @param  Person $person The resource entity from the given person.
