@@ -6,8 +6,11 @@ use App\Composers\AlertComposer;
 use App\Composers\AppNavComposer;
 use App\Composers\KioskComposer;
 use App\Composers\LayoutComposer;
+use App\Markdown\Converter;
+use App\Markdown\LeagueConverter;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Telescope\TelescopeServiceProvider;
+use League\CommonMark\CommonMarkConverter;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -34,5 +37,9 @@ class AppServiceProvider extends ServiceProvider
         if ($this->app->isLocal()) {
             $this->app->register(TelescopeServiceProvider::class);
         }
+
+        $this->app->bind(Converter::class, function () {
+            return new LeagueConverter(new CommonMarkConverter(['html_input' => 'escape']));
+        });
     }
 }
