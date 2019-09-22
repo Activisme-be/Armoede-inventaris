@@ -43,6 +43,17 @@ class NotesController extends Controller
     }
 
     /**
+     * Implementing method for displaying the note in the application.
+     *
+     * @param  Note $note The database entity from the given note.
+     * @return Renderable
+     */
+    public function show(Note $note): Renderable
+    {
+        return view('notes.show', compact('note'));
+    }
+
+    /**
      * Method for creating a new note for the person.
      *
      * @param  Person $person The resource entity from the given person.

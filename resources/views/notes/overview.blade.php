@@ -36,8 +36,8 @@
                             <thead>
                                 <tr>
                                     <th class="border-top-0" scope="col">Auteur</th>
-                                    <th class="border-top-0" scope="col">Zichtbaarheid</th>
                                     <th class="border-top-0" scope="col">Titel</th>
+                                    <th class="border-top-0" scope="col">Toegevoegd op</th>
                                     <th class="border-top-0" scope="col">&nbsp;</th> {{-- Column dedicated to the function shortcuts --}}
                                 </tr>
                             </thead>
@@ -46,19 +46,12 @@
                                     <tr>
                                         <td class="font-weight-bold">{{ $note->creator->name }}</td>
 
-                                        <td> {{-- visibility indicator --}}
-                                            @if ($note->is_public)
-                                                <span class="badge badge-public">Iedereen</span>
-                                            @else {{-- The note is only visible for me. --}}
-                                                <span class="badge badge-only-me">Persoonlijk</span>
-                                            @endif
-                                        </td> {{-- /// END visibility indicator --}}
-
                                         <td>{{ $note->titel }}</td>
+                                        <td class="font-weight-light">{{ $note->created_at->format('d/m/Y') }}</td>
 
                                         <td> {{-- Function shortcuts --}}
                                             <span class="float-right">
-                                                <a href="" class="text-decoration-none text-muted">
+                                                <a href="{{ route('person.notes.show', $note) }}" class="text-decoration-none text-muted">
                                                     <i class="fe fe-eye"></i>
                                                 </a>
 

@@ -41,6 +41,7 @@ Route::get('/persoon/{person}/notities', [NotesController::class, 'index'])->nam
 Route::get('/persoon/{person}/nieuwe-notitie', [NotesController::class, 'create'])->name('person.notes.create');
 Route::post('/persoon/{person}/nieuwe-notitie', [NotesController::class, 'store'])->name('person.notes.store');
 Route::get('/notitie/verwijderen/{note}', [NotesController::class, 'destroy'])->name('person.notes.delete');
+Route::get('/notitie/{notitie}', [NotesController::class, 'show'])->name('person.notes.show');
 
 // User Settings routes
 Route::get('/account', [AccountController::class, 'index'])->name('account.settings');
