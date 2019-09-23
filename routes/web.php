@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\Inventory\CategoryController;
 use App\Http\Controllers\NotesController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PersonsController;
@@ -22,6 +23,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Activity routes
 Route::get('{user}/logs', [ActivityController::class, 'show'])->name('users.activity');
+
+// Categories routes
+Route::get('/categorieen', [CategoryController::class, 'index'])->name('categories.index');
+Route::get('/categorie/nieuw', [CategoryController::class, 'create'])->name('categories.create');
+Route::post('/categorie/nieuw', [CategoryController::class, 'store'])->name('categories.store');
+Route::get('/categorie/{category}', [CategoryController::class, 'show'])->name('category.show');
+Route::get('/categorie/verwijderen/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
 // Notification routes
 Route::get('/notificaties/markAll', [NotificationController::class, 'markAll'])->name('notifications.markAll');
