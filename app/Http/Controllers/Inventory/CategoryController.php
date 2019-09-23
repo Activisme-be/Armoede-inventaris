@@ -53,8 +53,9 @@ class CategoryController extends Controller
     /**
      * Method for displaying the information from the item category
      *
-     * @todo Implement view
+     * @todo Implement view <- IN PROGRESS
      *
+     * @param  Category $category The resource entity from the given entity
      * @return Renderable
      */
     public function show(Category $category): Renderable
@@ -86,12 +87,17 @@ class CategoryController extends Controller
      *
      * @throws \Illuminate\Auth\Access\AuthorizationException <- Triggers when the user is not Authorized
      *
+     * @param  Request  $request  The resquest entity that holds all the request information.
      * @param  Category $category The resource entity from the given Category in the application.
      * @return RedirectResponse
      */
-    public function destroy(Category $category): RedirectResponse
+    public function destroy(Request $request, Category $category): RedirectResponse
     {
         $this->authorize('delete', $category);
+
+        if ($request->isMethod('GET')) {
+            return view('categories.delete', compact('category'));
+        }
 
         DB::transaction(function () use ($category): void {
             $category->delete();
