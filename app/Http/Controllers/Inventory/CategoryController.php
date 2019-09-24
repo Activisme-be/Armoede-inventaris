@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 /**
  * Class CategoryController
@@ -51,9 +52,23 @@ class CategoryController extends Controller
     }
 
     /**
-     * Method for displaying the information from the item category
+     * Method for updating a category in the application.
      *
-     * @todo Implement view <- IN PROGRESS
+     * @throws \Illuminate\Auth\Access\AuthorizationException <- Triggers when the user is not permitted for the operation.
+     *
+     * @param  CategoryFormRequest $request  The form request class that handles the validation logic
+     * @param  Category            $category Entity from the authenticated user.
+     * @return RedirectResponse
+     */
+    public function update(CategoryFormRequest $request, Category $category): RedirectResponse
+    {
+        $this->authorize('edit', $category);
+
+        dd($request->all());
+    }
+
+    /**
+     * Method for displaying the information from the item category
      *
      * @param  Category $category The resource entity from the given entity
      * @return Renderable

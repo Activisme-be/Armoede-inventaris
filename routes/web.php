@@ -29,6 +29,7 @@ Route::get('/categorieen', [CategoryController::class, 'index'])->name('categori
 Route::get('/categorie/nieuw', [CategoryController::class, 'create'])->name('categories.create');
 Route::post('/categorie/nieuw', [CategoryController::class, 'store'])->name('categories.store');
 Route::get('/categorie/{category}', [CategoryController::class, 'show'])->name('category.show');
+Route::patch('/categorie/{category}', [CategoryController::class, 'update'])->name('category.update');
 Route::match(['get', 'delete'], '/categorie/verwijderen/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
 // Notification routes

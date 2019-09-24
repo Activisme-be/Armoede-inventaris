@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Gate;
 
 /**
  * Class CategoryFormRequest
@@ -18,6 +20,10 @@ class CategoryFormRequest extends FormRequest
      */
     public function rules(): array
     {
-        return ['naam' => ['required', 'string', 'max:255', 'unique:categories']];
+        if ($this->isMethod('POST')) {
+            return ['naam' => ['required', 'string', 'max:255', 'unique:categories']];
+        }
+
+        return ['naam' => ['required', 'string', 'max:255', 'unique:categories,naam,' . $this->category->id]];
     }
 }

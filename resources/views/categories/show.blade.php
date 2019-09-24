@@ -21,7 +21,7 @@
             </div> {{-- /// Sidenav --}}
 
             <div class="col-md-9">
-                <form action="" method="POST" class="card card-body border-0 shadow-sm">
+                <form action="{{ route('category.update', $category) }}" method="POST" class="card card-body border-0 shadow-sm">
                     <h6 class="border-bottom border-gray pb-1 mb-3">
                         <i class="fe fe-tag fe-brand fe-info mr-2"></i> Algemene informatie omtrent {{ $category->naam }}
                     </h6>
@@ -29,6 +29,8 @@
                     @csrf               {{-- Form field protection --}}
                     @method ('PATCH')   {{-- HTTP method spoofing --}}
                     @form($category)    {{-- Bind data to the form --}}
+
+                    @include ('flash::message') {{-- Flash session view partial --}}
 
                     <fieldset @cannot('edit', $category) disabled @endcan>
                         <div class="form-row">
