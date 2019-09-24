@@ -26,4 +26,16 @@ class CategoryPolicy
     {
         return $user->hasAnyRole(['admin', 'webmaster']) || $user->is($category->creator);
     }
+
+    /**
+     * Determine whether the user can edit the category.
+     *
+     * @param  User      $user      The entity from the currently authenticated user.
+     * @param  Category  $category  The entity from the given category.
+     * @return bool
+     */
+    public function edit(User $user, Category $category): bool
+    {
+        return $user->hasAnyRole(['admin', 'webmaster']) || $user->is($category->creator);
+    }
 }
