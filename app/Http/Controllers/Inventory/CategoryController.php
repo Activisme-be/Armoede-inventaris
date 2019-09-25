@@ -111,9 +111,9 @@ class CategoryController extends Controller
      *
      * @param  Request  $request  The resquest entity that holds all the request information.
      * @param  Category $category The resource entity from the given Category in the application.
-     * @return RedirectResponse
+     * @return Renderable|RedirectResponse
      */
-    public function destroy(Request $request, Category $category): RedirectResponse
+    public function destroy(Request $request, Category $category)
     {
         $this->authorize('delete', $category);
 
