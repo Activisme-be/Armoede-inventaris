@@ -54,7 +54,6 @@ Route::get('/notitie/wijzig/{note}', [NotesController::class, 'edit'])->name('pe
 Route::patch('/notitie/wijzig/{note}', [NotesController::class, 'update'])->name('person.notes.update');
 Route::get('/notitie/{note}', [NotesController::class, 'show'])->name('person.notes.show');
 
-
 // User Settings routes
 Route::get('/account', [AccountController::class, 'index'])->name('account.settings');
 Route::get('/account/beveiliging', [AccountController::class, 'indexSecurity'])->name('account.security');
