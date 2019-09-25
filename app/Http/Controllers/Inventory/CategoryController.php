@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Inventory;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryFormRequest;
 use App\Models\Category;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
@@ -64,7 +64,14 @@ class CategoryController extends Controller
     {
         $this->authorize('edit', $category);
 
-        dd($request->all());
+        DB::transaction(static function () use ($request, $category): void {
+            $category->update($request->all());
+            $request->user()->logActivity($category, 'Categorieen', "Heeft een categorie ({$category->name}) aangepast in de applicatie.");
+
+            flash('De categorie is met succes aangepast in de applicatie.');
+        });
+
+        return redirect()->route('categories.index');
     }
 
     /**
