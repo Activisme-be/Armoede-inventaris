@@ -11,6 +11,11 @@
 @import '~bootstrap/scss/bootstrap';
 @import "~primer-blankslate/index.scss";
 
+.badge-counter, .badge-public, .badge-only-me {
+    color: #38A169;
+    background-color: #C6F6D5;
+}
+
 .list-group-transparent .list-group-item {
     background: none;
     border: 0;
@@ -23,8 +28,11 @@
     font-weight: 600;
     color: #000;
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-    left: -5px;
     border-left: 5px solid #b9210c;
+
+    .fe {
+        margin-left: -5px !important;
+    }
 }
 
 .form-control:disabled,

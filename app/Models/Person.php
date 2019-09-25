@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -27,6 +28,18 @@ class Person extends Model
     public function getNameAttribute(): string
     {
         return "{$this->voornaam} {$this->achternaam}";
+    }
+
+    /**
+     * Data relation for the internal notes for the person in the application.
+     * ----
+     * WARNING: Notes should never be shared with the person. <- For later development.
+     *
+     * @return HasMany
+     */
+    public function notes(): HasMany
+    {
+        return $this->hasMany(Note::class);
     }
 
     /**

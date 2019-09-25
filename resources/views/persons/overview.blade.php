@@ -42,7 +42,7 @@
                         @forelse ($persons as $person)
                             <tr>
                                 <td class="font-weight-bold text-muted">#{{ $person->id }}</td>
-                                <td>{{ $person->name }}</td>
+                                <td class="font-weight-bold">{{ $person->name }}</td>
                                 <td>
                                     <a href="mailto:{{ $person->email }}" class="text-decoration-none">
                                         {{ $person->email }}
