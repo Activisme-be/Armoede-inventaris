@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\Inventory\CategoryController;
 use App\Http\Controllers\NotesController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PersonsController;
@@ -23,6 +24,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Activity routes
 Route::get('{user}/logs', [ActivityController::class, 'show'])->name('users.activity');
 
+// Categories routes
+Route::get('/categorieen', [CategoryController::class, 'index'])->name('categories.index');
+Route::get('/categorie/nieuw', [CategoryController::class, 'create'])->name('categories.create');
+Route::post('/categorie/nieuw', [CategoryController::class, 'store'])->name('categories.store');
+Route::get('/categorie/{category}', [CategoryController::class, 'show'])->name('category.show');
+Route::patch('/categorie/{category}', [CategoryController::class, 'update'])->name('category.update');
+Route::match(['get', 'delete'], '/categorie/verwijderen/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+
 // Notification routes
 Route::get('/notificaties/markAll', [NotificationController::class, 'markAll'])->name('notifications.markAll');
 Route::get('/notificaties/markOne/{notification}', [NotificationController::class, 'markOne'])->name('notifications.markAsRead');
@@ -41,7 +50,9 @@ Route::get('/persoon/{person}/notities', [NotesController::class, 'index'])->nam
 Route::get('/persoon/{person}/nieuwe-notitie', [NotesController::class, 'create'])->name('person.notes.create');
 Route::post('/persoon/{person}/nieuwe-notitie', [NotesController::class, 'store'])->name('person.notes.store');
 Route::get('/notitie/verwijderen/{note}', [NotesController::class, 'destroy'])->name('person.notes.delete');
-Route::get('/notitie/{notitie}', [NotesController::class, 'show'])->name('person.notes.show');
+Route::get('/notitie/wijzig/{note}', [NotesController::class, 'edit'])->name('person.notes.edit');
+Route::patch('/notitie/wijzig/{note}', [NotesController::class, 'update'])->name('person.notes.update');
+Route::get('/notitie/{note}', [NotesController::class, 'show'])->name('person.notes.show');
 
 // User Settings routes
 Route::get('/account', [AccountController::class, 'index'])->name('account.settings');

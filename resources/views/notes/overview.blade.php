@@ -52,7 +52,7 @@
                                         <td> {{-- Function shortcuts --}}
                                             <span class="float-right">
                                                 <a href="{{ route('person.notes.show', $note) }}" class="text-decoration-none text-muted">
-                                                    <i class="fe fe-eye"></i>
+                                                    <i class="fe fe-eye"></i> <span class="text-muted small ml-1">bekijk</span>
                                                 </a>
 
                                                 @can('delete', $note) {{-- Check is the user is authorized to delete the note --}}
