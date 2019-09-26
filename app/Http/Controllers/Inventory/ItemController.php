@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Inventory;
 
+use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Items;
 use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class ItemController extends Controller
 {
@@ -36,6 +36,6 @@ class ItemController extends Controller
      */
     public function create(): Renderable
     {
-        return view('inventory.create');
+        return view('inventory.create', ['categories' => Category::pluck('naam', 'id')]);
     }
 }
