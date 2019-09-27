@@ -51,7 +51,7 @@ class ItemController extends Controller
      */
     public function store(ItemFormRequest $request, Items $item): RedirectResponse
     {
-        $request->merge(['product_code' => $item::generateProductCode(), 'category_id' => $request->categorie]);
+        $request->merge(['product_code' => $item::generateProductCode(), 'category_id' => $request->categoriex]);
 
         DB::transaction(static function () use ($request, $item): void {
             $item = $item->create($request->except('categorie'))->setCreator($request->user());
@@ -61,5 +61,16 @@ class ItemController extends Controller
         });
 
         return redirect()->route('inventory.index');
+    }
+
+    /**
+     * Method for displaying the information from the item.
+     *
+     * @param  Items $item The resource entity from the given item.
+     * @return Renderable
+     */
+    public function show(Items $item): Renderable
+    {
+        return view('inventory.show', compact('item'));
     }
 }

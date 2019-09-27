@@ -37,6 +37,7 @@ Route::match(['get', 'delete'], '/categorie/verwijderen/{category}', [CategoryCo
 Route::get('/inventaris', [ItemController::class, 'index'])->name('inventory.index');
 Route::get('/inventaris/nieuw-item', [ItemController::class, 'create'])->name('inventory.create');
 Route::post('/inventaris/nieuw-item', [ItemController::class, 'store'])->name('inventory.store');
+Route::get('/inventaris/{item}', [ItemController::class, 'show'])->name('inventory.item');
 
 // Notification routes
 Route::get('/notificaties/markAll', [NotificationController::class, 'markAll'])->name('notifications.markAll');

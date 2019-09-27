@@ -14,7 +14,7 @@
                 <div class="btn-group shadow-sm ml-2" role="group" aria-label="Inventaris opties">
                     <div class="btn-group" role="group">
                         <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fe fe-plus mr-2"></i> Check-in
+                            <i class="fe fe-plus mr-2"></i> Inboeken
                         </button>
                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                             <a class="dropdown-item" href="{{ route('inventory.create') }}">Nieuw item</a>
@@ -22,7 +22,7 @@
                         </div>
                     </div>
                     <a href="" class="btn btn-secondary">
-                        <i class="fe fe-minus mr-2"></i> Checkout
+                        <i class="fe fe-minus mr-2"></i> Uitboeken
                     </a>
                 </div>
             </div>
@@ -68,7 +68,7 @@
 
                                 <td> {{-- Item function shortcuts --}}
                                     <span class="float-right">
-                                        <a href="" class="text-secondary text-decoration-none">
+                                        <a href="{{ route('inventory.item', $item) }}" class="text-secondary text-decoration-none">
                                             <i class="fe fe-eye"></i>
                                         </a>
 
