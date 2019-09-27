@@ -51,7 +51,7 @@ class ItemController extends Controller
      */
     public function store(ItemFormRequest $request, Items $item): RedirectResponse
     {
-        $request->merge(['product_code' => $item::generateProductCode(), 'category_id' => $request->category]);
+        $request->merge(['product_code' => $item::generateProductCode(), 'category_id' => $request->categorie]);
 
         DB::transaction(static function () use ($request, $item): void {
             $item = $item->create($request->except('categorie'))->setCreator($request->user());

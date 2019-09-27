@@ -8,7 +8,7 @@
 
             <div class="page-options d-flex">
                 <form method="GET" action="" class="border-0 shadow-sm form-search-xl ml-2">
-                    <input type="text" class="form-search-xl border-0 form-control" @input('term') placeholder="Zoeken op naam of email">
+                    <input type="text" class="form-search-xl border-0 form-control" @input('term') placeholder="Zoeken op naam of item code">
                 </form>
 
                 <div class="btn-group shadow-sm ml-2" role="group" aria-label="Inventaris opties">
@@ -40,8 +40,8 @@
                     <thead>
                         <tr>
                             <th class="text-muted border-top-0" scope="col">Item code</th>
-                            <th class="border-top-0" scope="col">Naam</th>
                             <th class="border-top-0" scope="col">Status</th>
+                            <th class="border-top-0" scope="col">Naam</th>
                             <th class="border-top-0" scope="col">Categorie</th>
                             <th class="border-top-0" scope="col">Aantal</th>
                             <th class="border-top-0" scope="col">&nbsp;</th>
@@ -49,6 +49,35 @@
                     </thead>
                     <tbody>
                         @forelse ($items as $item) {{-- Loop trough the inventory items --}}
+                            <tr>
+                                <td class="text-muted font-weight-bold">#{{ $item->product_code }}</td>
+                                <td> {{-- Status indicator --}}
+                                    @if ($item->isLow())
+                                        <span class="badge-danger">Lage voorraad</span>
+                                    @elseif($item->isNormal())
+                                        <span class="badge badge-success">Normale voorraad</span>
+                                    @elseif($item->isHigh())
+                                        <span class="badge badge-primary">Hoge voorraad</span>
+                                    @else {{-- Item amount unknown --}}
+                                        <span class="badge badge-dark">Onbekend</span>
+                                    @endif
+                                </td> {{-- /// End status indicator --}}
+                                <td>{{ $item->category->naam ?? 'Onbekend' }}</td>
+                                <td>{{ $item->naam }}</td>
+                                <td>{{ $item->aantal }} stuks</td>
+
+                                <td> {{-- Item function shortcuts --}}
+                                    <span class="float-right">
+                                        <a href="" class="text-secondary text-decoration-none">
+                                            <i class="fe fe-eye"></i>
+                                        </a>
+
+                                        <a href="" class="text-danger text-decoration-none ml-1">
+                                            <i class="fe fe-trash-2"></i>
+                                        </a>
+                                    </span>
+                                </td> {{-- /// END item function shortcuts --}}
+                            </tr>
                         @empty {{-- There are no items found in the inventory --}}
                             <tr>
                                 <td class="text-muted" colspan="6">

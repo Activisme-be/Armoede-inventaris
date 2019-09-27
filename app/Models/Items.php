@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Relations\Creatorable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * Class Items
@@ -51,5 +52,45 @@ class Items extends Model
         }
 
         return false;
+    }
+
+    /**
+     * Category relation.
+     *
+     * @return BelongsTo
+     */
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Items::class);
+    }
+
+    /**
+     * Determine is the item is low amount on items.
+     *
+     * @return bool
+     */
+    public function isLow(): bool
+    {
+        return $this->aantal < 10;
+    }
+
+    /**
+     * Determine if the item is normal amount on items.
+     *
+     * @return bool
+     */
+    public function isNormal(): bool
+    {
+        return $this->aantal >= 10 && $this->aantal <= 20;
+    }
+
+    /**
+     * Determine if the is high amount on items.
+     *
+     * @return bool
+     */
+    public function isHigh(): bool
+    {
+        return $this->aantal > 20;
     }
 }
