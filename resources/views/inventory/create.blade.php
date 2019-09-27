@@ -82,7 +82,15 @@
 
             <div class="form-row">
                 <div class="form-group col-12">
+                    <span class="float-right">
+                        <button type="submit" class="btn btn-success">
+                            <i class="fe fe-save mr-1"></i> Opslaan
+                        </button>
 
+                        <button type="reset" class="btn btn-light">
+                            <i class="fe fe-rotate-ccw mr-1"></i> Reset
+                        </button>
+                    </span>
                 </div>
             </div>
         </form>
