@@ -39,7 +39,7 @@
                 <table class="table table-sm table-hover mb-0">
                     <thead>
                         <tr>
-                            <th class="text-muted border-top-0" scope="col">UPC</th>
+                            <th class="text-muted border-top-0" scope="col">Item code</th>
                             <th class="border-top-0" scope="col">Naam</th>
                             <th class="border-top-0" scope="col">Status</th>
                             <th class="border-top-0" scope="col">Categorie</th>

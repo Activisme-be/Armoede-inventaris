@@ -15,7 +15,7 @@
     </div>
 
     <div class="container-fluid pb-3">
-        <form action="" class="card card-body border-0 shadow-sm">
+        <form action="{{ route('inventory.store') }}" method="POST" class="card card-body border-0 shadow-sm">
             <h6 class="border-bottom border-gray pb-1 mb-3">
                 <i class="fe fe-list fe-brand mr-2"></i> Inventaris item toevoegen
             </h6>
@@ -30,7 +30,7 @@
                     <div class="form-row">
                         <div class="form-group col-7">
                             <label for="name">Naam <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control @error('name', 'is-invalid')" placeholder="Item naam" id="name" @input('naam')>
+                            <input type="text" class="form-control @error('naam', 'is-invalid')" placeholder="Item naam" id="name" @input('naam')>
                             @error('naam')
                         </div>
 
@@ -53,7 +53,7 @@
 
                         <div class="form-group col-4">
                             <label for="amount">Aantal stuks <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control @error('amount', 'is-invalid')" placeholder="Aantal stuks" @input('aantal') id="amount">
+                            <input type="text" class="form-control @error('aantal', 'is-invalid')" placeholder="Aantal stuks" @input('aantal') id="amount">
                             @error('aantal')
                         </div>
                     </div>
@@ -81,7 +81,7 @@
             <hr class="mt-0">
 
             <div class="form-row">
-                <div class="form-group col-12">
+                <div class="form-group col-12 mb-0">
                     <span class="float-right">
                         <button type="submit" class="btn btn-success">
                             <i class="fe fe-save mr-1"></i> Opslaan
