@@ -63,6 +63,11 @@ class ItemController extends Controller
         return redirect()->route('inventory.index');
     }
 
+    public function update(ItemFormRequest $request, Items $item): RedirectResponse
+    {
+
+    }
+
     /**
      * Method for displaying the information from the item.
      *

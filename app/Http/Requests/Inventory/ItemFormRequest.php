@@ -21,7 +21,7 @@ class ItemFormRequest extends FormRequest
         return [
             'opslag_locatie' => ['required', 'string', 'max:255'],
             'categorie'      => ['required', 'integer'],
-            'naam'           => ['required', 'string', 'max:255'],
+            'naam'           => ['required', 'string', 'max:255', 'items:unique'],
             'aantal'         => ['required', 'integer']
         ];
     }
