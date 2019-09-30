@@ -71,6 +71,7 @@ class ItemController extends Controller
      */
     public function show(Items $item): Renderable
     {
-        return view('inventory.show', compact('item'));
+        $categories = Category::all();
+        return view('inventory.show', compact('item', 'categories'));
     }
 }

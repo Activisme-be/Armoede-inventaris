@@ -2,4 +2,8 @@
     <a href="{{ route('inventory.item', $item) }}" class="{{ active('inventory.item') }} list-group-item list-group-item-action">
         <i class="fe fe-brand fe-info mr-2"></i> Algemene informatie
     </a>
+
+    <a href="" class="list-group-item list-group-item-action">
+        <i class="fe fe-brand fe-trash-2 mr-2"></i> Verwijder item
+    </a>
 </div>
