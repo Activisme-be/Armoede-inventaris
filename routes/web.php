@@ -1,14 +1,13 @@
 <?php
 
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\Auth\PasswordSecurityController;
 use App\Http\Controllers\Inventory\CategoryController;
 use App\Http\Controllers\Inventory\ItemController;
 use App\Http\Controllers\NotesController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PersonsController;
 use App\Http\Controllers\Users\AccountController;
-use App\Http\Controllers\Auth\PasswordSecurityController;
 
 /*
 |--------------------------------------------------------------------------
