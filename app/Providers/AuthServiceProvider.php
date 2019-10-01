@@ -2,9 +2,13 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
+use App\Models\Items;
 use App\Models\Note;
 use App\Models\Person;
 use App\Models\User;
+use App\Policies\CategoryPolicy;
+use App\Policies\ItemPolicy;
 use App\Policies\NotePolicy;
 use App\Policies\PersonPolicy;
 use App\Policies\UserPolicy;
@@ -21,9 +25,11 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        User::class => UserPolicy::class,
-        Note::class => NotePolicy::class,
-        Person::class => PersonPolicy::class
+        User::class     => UserPolicy::class,
+        Note::class     => NotePolicy::class,
+        Person::class   => PersonPolicy::class,
+        Category::class => CategoryPolicy::class,
+        Items::class    => ItemPolicy::class,
     ];
 
     /**

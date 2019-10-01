@@ -2,7 +2,6 @@
 
 namespace App\Models\Relations;
 
-use App\Models\Note;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 

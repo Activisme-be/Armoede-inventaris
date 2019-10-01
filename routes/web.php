@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\Auth\PasswordSecurityController;
+use App\Http\Controllers\Inventory\CategoryController;
+use App\Http\Controllers\Inventory\ItemController;
 use App\Http\Controllers\NotesController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PersonsController;
 use App\Http\Controllers\Users\AccountController;
-use App\Http\Controllers\Auth\PasswordSecurityController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,20 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Activity routes
 Route::get('{user}/logs', [ActivityController::class, 'show'])->name('users.activity');
+
+// Categories routes
+Route::get('/categorieen', [CategoryController::class, 'index'])->name('categories.index');
+Route::get('/categorie/nieuw', [CategoryController::class, 'create'])->name('categories.create');
+Route::post('/categorie/nieuw', [CategoryController::class, 'store'])->name('categories.store');
+Route::get('/categorie/{category}', [CategoryController::class, 'show'])->name('category.show');
+Route::patch('/categorie/{category}', [CategoryController::class, 'update'])->name('category.update');
+Route::match(['get', 'delete'], '/categorie/verwijderen/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+
+// Inventory Routes
+Route::get('/inventaris', [ItemController::class, 'index'])->name('inventory.index');
+Route::get('/inventaris/nieuw-item', [ItemController::class, 'create'])->name('inventory.create');
+Route::post('/inventaris/nieuw-item', [ItemController::class, 'store'])->name('inventory.store');
+Route::get('/inventaris/{item}', [ItemController::class, 'show'])->name('inventory.item');
 
 // Notification routes
 Route::get('/notificaties/markAll', [NotificationController::class, 'markAll'])->name('notifications.markAll');
@@ -44,7 +59,6 @@ Route::get('/notitie/verwijderen/{note}', [NotesController::class, 'destroy'])->
 Route::get('/notitie/wijzig/{note}', [NotesController::class, 'edit'])->name('person.notes.edit');
 Route::patch('/notitie/wijzig/{note}', [NotesController::class, 'update'])->name('person.notes.update');
 Route::get('/notitie/{note}', [NotesController::class, 'show'])->name('person.notes.show');
-
 
 // User Settings routes
 Route::get('/account', [AccountController::class, 'index'])->name('account.settings');
