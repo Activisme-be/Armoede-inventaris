@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\Inventory\CategoryController;
+use App\Http\Controllers\Inventory\ItemController;
 use App\Http\Controllers\NotesController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PersonsController;
@@ -31,6 +32,13 @@ Route::post('/categorie/nieuw', [CategoryController::class, 'store'])->name('cat
 Route::get('/categorie/{category}', [CategoryController::class, 'show'])->name('category.show');
 Route::patch('/categorie/{category}', [CategoryController::class, 'update'])->name('category.update');
 Route::match(['get', 'delete'], '/categorie/verwijderen/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+
+// Inventory Routes
+Route::get('/inventaris', [ItemController::class, 'index'])->name('inventory.index');
+Route::get('/inventaris/nieuw-item', [ItemController::class, 'create'])->name('inventory.create');
+Route::post('/inventaris/nieuw-item', [ItemController::class, 'store'])->name('inventory.store');
+Route::get('/inventaris/{item}', [ItemController::class, 'show'])->name('inventory.item');
+Route::patch('/inventaris/{item}', [ItemController::class, 'update'])->name('inventory.item.update');
 
 // Notification routes
 Route::get('/notificaties/markAll', [NotificationController::class, 'markAll'])->name('notifications.markAll');
