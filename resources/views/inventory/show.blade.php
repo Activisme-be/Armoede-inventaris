@@ -23,7 +23,7 @@
             </div>
 
             <div class="col-md-9">
-                <form method="POST" action="" class="card card-body shadow-sm border-0">
+                <form method="POST" action="{{ route('inventory.item.update', $item) }}" class="card card-body shadow-sm border-0">
                     <h6 class="border-bottom border-gray pb-1 mb-3">
                         <i class="fe fe-info fe-brand mr-2"></i> Algemene informatie
                     </h6>
@@ -31,6 +31,8 @@
                     @csrf               {{-- Form field protection --}}
                     @method('PATCH')    {{-- HTTP method spoofing --}}
                     @form($item)        {{-- Bind data to the form --}}
+
+                    @include('flash::message') {{-- Flash session view partial --}}
 
                     <fieldset @cannot ('edit', $item) disabled @endcan>
                         <div class="row mt-1">
@@ -105,7 +107,7 @@
                                     </button>
 
                                     <button type="reset" class="btn btn-light">
-                                        <i class="fe fe-rotate-ccw mr-1"></i> Reset
+                                        <i class="fe fe-rotate-ccw text-danger mr-1"></i> Reset
                                     </button>
                                 </span>
                                 </div>

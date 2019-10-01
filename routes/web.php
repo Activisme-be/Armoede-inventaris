@@ -38,6 +38,7 @@ Route::get('/inventaris', [ItemController::class, 'index'])->name('inventory.ind
 Route::get('/inventaris/nieuw-item', [ItemController::class, 'create'])->name('inventory.create');
 Route::post('/inventaris/nieuw-item', [ItemController::class, 'store'])->name('inventory.store');
 Route::get('/inventaris/{item}', [ItemController::class, 'show'])->name('inventory.item');
+Route::patch('/inventaris/{item}', [ItemController::class, 'update'])->name('inventory.item.update');
 
 // Notification routes
 Route::get('/notificaties/markAll', [NotificationController::class, 'markAll'])->name('notifications.markAll');
