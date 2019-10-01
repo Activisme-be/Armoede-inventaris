@@ -4,7 +4,6 @@ namespace App\Composers;
 
 use App\Models\Person;
 use Illuminate\View\View;
-use Illuminate\Contracts\Auth\Guard;
 
 /**
  * Class AppNavComposer

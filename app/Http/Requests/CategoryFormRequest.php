@@ -3,8 +3,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Gate;
 
 /**
  * Class CategoryFormRequest
