@@ -4,7 +4,7 @@
     </a>
 
     @can ('delete', $item) {{-- Check if the user is permitted to perform the operation --}}
-        <a href="{{ route('inventory.item.delete', $item) }}" class="list-group-item list-group-item-action">
+        <a href="{{ route('inventory.item.delete', $item) }}" class="{{ active('inventory.item.delete') }} list-group-item list-group-item-action">
             <i class="fe fe-brand fe-trash-2 mr-2"></i> Verwijder item
         </a>
     @endcan

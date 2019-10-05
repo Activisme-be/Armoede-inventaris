@@ -103,14 +103,16 @@ class ItemController extends Controller
     /**
      * Method for deleting an item of the application.
      *
-     * @todo Build up the delete confirmation view.
+     * @throws \Illuminate\Auth\Access\AuthorizationException <- Triggered when the user is not permitted.
      *
-     * @param  Request $request The instance that holds all the request informtion.
-     * @param  Items    $item    The instance of the given item in the inventory.
+     * @param Request $request The instance that holds all the request informtion.
+     * @param Items $item The instance of the given item in the inventory.
      * @return Renderable|RedirectResponse
      */
     public function delete(Request $request, Items $item)
     {
+        $this->authorize('delete', $item);
+
         if ($request->isMethod('GET')) {
             return view('inventory.delete', compact('item'));
         }

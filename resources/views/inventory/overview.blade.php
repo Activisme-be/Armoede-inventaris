@@ -35,6 +35,8 @@
                 <i class="fe fe-list fe-brand mr-2"></i> Inventaris overzicht
             </h6>
 
+            @include ('flash::message') {{-- Flash session view partial --}}
+
             <div class="table-responsive">
                 <table class="table table-sm table-hover mb-0">
                     <thead>
