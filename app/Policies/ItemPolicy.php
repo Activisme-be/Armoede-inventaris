@@ -2,7 +2,6 @@
 
 namespace App\Policies;
 
-use App\Models\Items;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -18,12 +17,22 @@ class ItemPolicy
     /**
      * Determine whether the user can update the item.
      *
-     * @param  User  $user      The entity from the authenticated user.
-     * @param  Items $items     The entity from the given inventory item.
+     * @param  User  $user The entity from the authenticated user.
      * @return bool
      */
-    public function edit(User $user, Items $items): bool
+    public function edit(User $user): bool
     {
         return $user->hasAnyRole(['admin', 'webmaster']);
+    }
+
+    /**
+     * Determine whether the user is permitted to delete the inventory item.
+     *
+     * @param  User $user The entity from the authenticated user.
+     * @return bool
+     */
+    public function delete(User $user): bool
+    {
+        return $user->hasAnyRole(['admin', 'inventory']);
     }
 }
