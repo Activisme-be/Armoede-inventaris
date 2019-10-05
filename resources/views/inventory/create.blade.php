@@ -88,7 +88,7 @@
                         </button>
 
                         <button type="reset" class="btn btn-light">
-                            <i class="fe fe-rotate-ccw mr-1"></i> Reset
+                            <i class="fe fe-rotate-ccw text-danger mr-1"></i> Reset
                         </button>
                     </span>
                 </div>
