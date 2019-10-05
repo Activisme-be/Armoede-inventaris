@@ -72,9 +72,11 @@
                                             <i class="fe fe-eye"></i>
                                         </a>
 
-                                        <a href="" class="text-danger text-decoration-none ml-1">
-                                            <i class="fe fe-trash-2"></i>
-                                        </a>
+                                        @can ('delete', $item) {{-- Check if the user is permitted for the operation. --}}
+                                            <a href="{{ route('inventory.item.delete', $item) }}" class="text-danger text-decoration-none ml-1">
+                                                <i class="fe fe-trash-2"></i>
+                                            </a>
+                                        @endcan
                                     </span>
                                 </td> {{-- /// END item function shortcuts --}}
                             </tr>

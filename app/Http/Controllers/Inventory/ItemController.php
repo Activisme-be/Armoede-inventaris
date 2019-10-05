@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Items;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ItemController extends Controller
@@ -78,8 +79,9 @@ class ItemController extends Controller
 
         DB::transaction(static function () use ($request, $item): void {
             $request->merge(['category_id' => $request->categorie]);
-            $item->update($request->except('categorie'));
+            $request->user()->logActivity($item, 'Inventaris', "Heeft de informatie omtrent {$item->naam} aangepast in de applicatie.");
 
+            $item->update($request->except('categorie'));
             flash("Het item is met success in de aaplicatie gewijzigd.");
         });
 
@@ -96,5 +98,31 @@ class ItemController extends Controller
     {
         $categories = Category::all();
         return view('inventory.show', compact('item', 'categories'));
+    }
+
+    /**
+     * Method for deleting an item of the application.
+     *
+     * @todo Build up the delete confirmation view.
+     *
+     * @param  Request $request The instance that holds all the request informtion.
+     * @param  Items    $item    The instance of the given item in the inventory.
+     * @return Renderable|RedirectResponse
+     */
+    public function delete(Request $request, Items $item)
+    {
+        if ($request->isMethod('GET')) {
+            return view('inventory.delete', compact('item'));
+        }
+
+        // Request is defined as a delete Request so delete the actual item in the application.
+        DB::transaction(function () use ($request, $item): void {
+            $item->delete();
+            $request->user()->logActivity($item, 'Inventaris', "Heeft {$item->naam} verwijderd in de applicatie.");
+
+            flash($item->naam . ' is verwijderd als item in de applicatie.');
+        });
+
+        return redirect()->route('inventory.index');
     }
 }
