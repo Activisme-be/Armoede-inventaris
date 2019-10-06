@@ -45,7 +45,7 @@
                             <th class="border-top-0" scope="col">Status</th>
                             <th class="border-top-0" scope="col">Naam</th>
                             <th class="border-top-0" scope="col">Categorie</th>
-                            <th class="border-top-0" scope="col">Aantal</th>
+                            <th class="border-top-0" scope="col">Opslag locatie</th>
                             <th class="border-top-0" scope="col">&nbsp;</th>
                         </tr>
                     </thead>
@@ -66,7 +66,7 @@
                                 </td> {{-- /// End status indicator --}}
                                 <td>{{ $item->category->naam ?? 'Onbekend' }}</td>
                                 <td>{{ $item->naam }}</td>
-                                <td>{{ $item->aantal }} stuks</td>
+                                <td>{{ $item->opslag_locatie }}</td>
 
                                 <td> {{-- Item function shortcuts --}}
                                     <span class="float-right">

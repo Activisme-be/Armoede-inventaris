@@ -55,7 +55,7 @@ class ItemController extends Controller
         $request->merge(['product_code' => $item::generateProductCode(), 'category_id' => $request->categoriex]);
 
         DB::transaction(static function () use ($request, $item): void {
-            $item = $item->create($request->except('categorie'))->setCreator($request->user());
+            $item = $item->firstOrNew($request->except('categorie'))->setCreator($request->user());
             $request->user()->logActivity($item, 'Inventaris', "Heeft {$item->naam} als nieuw item toegevoegd in de applicatie");
 
             flash($item->naam . 'is met success toegevoegd als nieuw item in de inventaris.');

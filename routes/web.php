@@ -4,6 +4,7 @@ use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\Auth\PasswordSecurityController;
 use App\Http\Controllers\Inventory\CategoryController;
 use App\Http\Controllers\Inventory\ItemController;
+use App\Http\Controllers\Inventory\QuantityController;
 use App\Http\Controllers\NotesController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PersonsController;
@@ -39,6 +40,9 @@ Route::post('/inventaris/nieuw-item', [ItemController::class, 'store'])->name('i
 Route::get('/inventaris/{item}', [ItemController::class, 'show'])->name('inventory.item');
 Route::patch('/inventaris/{item}', [ItemController::class, 'update'])->name('inventory.item.update');
 Route::match(['get', 'delete'], 'inventaris/{item}/verwijder', [ItemController::class, 'delete'])->name('inventory.item.delete');
+
+// Checkin routes
+Route::get('/inventaris/{item}/inboeken', [QuantityController::class, 'create'])->name('inventory.item.add');
 
 // Notification routes
 Route::get('/notificaties/markAll', [NotificationController::class, 'markAll'])->name('notifications.markAll');
