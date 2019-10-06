@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Inventory;
 
+use App\Http\Controllers\Controller;
 use App\Models\Items;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 /**
  * Class QuantityController
@@ -45,6 +44,5 @@ class QuantityController extends Controller
      */
     public function store(): RedirectResponse
     {
-
     }
 }
